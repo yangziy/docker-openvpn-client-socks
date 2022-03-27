@@ -36,8 +36,20 @@ Then connect to SOCKS proxy through through `localhost:1080` / `local.docker:108
 curl --proxy socks5h://local.docker:1080 ipinfo.io
 ```
 
+## Solutions to Common Problems
+
+### I'm getting `RTNETLINK answers: Permission denied`
+
+Try adding `--sysctl net.ipv6.conf.all.disable_ipv6=0` to your docker command
+
+### DNS doesn't work
+
+You can put a `update-resolv-conf` as your `up` script. One simple way is to put [this file](https://gist.github.com/Ikke/3829134) as `up.sh` inside your OpenVPN configuration directory.
+
 ## HTTP Proxy
 
 You can easily convert this to an HTTP proxy using [http-proxy-to-socks](https://github.com/oyyd/http-proxy-to-socks), e.g.
 
+```bash
 hpts -s 127.0.0.1:1080 -p 8080
+```
