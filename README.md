@@ -1,3 +1,9 @@
+1. Create folder ovpn
+2. Put .ovpn file under folder ovpn
+3. Set the environment variables OVPN_FILE, DNS_SERVER in start.sh
+
+====
+
 # OpenVPN-client
 
 This is a docker image of an OpenVPN client tied to a SOCKS proxy server.  It is

@@ -20,5 +20,6 @@ COPY sockd.conf /etc/
 
 ENTRYPOINT [ \
     "/bin/bash", "-c", \
-    "cd /etc/openvpn && /usr/sbin/openvpn --config *.conf --script-security 2 --up /usr/local/bin/sockd.sh" \
+    "echo \"nameserver ${DNS_SERVER}\" > /etc/resolv.conf.todo && \
+    cd /etc/openvpn && /usr/sbin/openvpn --config ${OVPN_FILE}  --script-security 2 --up /usr/local/bin/sockd.sh" \
     ]

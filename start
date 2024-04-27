@@ -7,7 +7,9 @@ exec docker run \
     --device=/dev/net/tun \
     --name=openvpn-client \
     --cap-add=NET_ADMIN \
+    --env OVPN_FILE=yhome.ovpn \
+    --env DNS_SERVER="192.168.8.1" \
     --publish 127.0.0.1:1080:1080 \
-    --volume "$(realpath "$1"):/etc/openvpn/:ro" \
+    --volume "$PWD/ovpn:/etc/openvpn/:ro" \
     --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    kizzx2/openvpn-client-socks
+    ziony/openvpn-client
